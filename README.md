@@ -1,9 +1,15 @@
 ## Go-Slack-Webhook  
 This is the simple repository for sending slack message with golang.
 
+## Installation
+
+```bash
+go get github.com/Bulut-Bilisimciler/go-slack-webhook
+```
+
 ### Example
 
-- Run this command to golang swag with no env
+- Example golang code
 
 ```go
 func main() {

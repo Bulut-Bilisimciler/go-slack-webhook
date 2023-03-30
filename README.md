@@ -42,3 +42,5 @@ func main() {
 
 - v1.0.0
   - Initial release (simple payload and message send utility added)
+- v1.0.1
+  - Attachment utility support added

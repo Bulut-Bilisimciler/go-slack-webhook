@@ -12,16 +12,24 @@ go get github.com/Bulut-Bilisimciler/go-slack-webhook
 - Example golang code
 
 ```go
+
+import (
+	"log"
+
+	sm "github.com/Bulut-Bilisimciler/go-slack-webhook/models"
+	sw "github.com/Bulut-Bilisimciler/go-slack-webhook/slack"
+)
+
 func main() {
 	// read config
 	webhookURL := "https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/XXXXXXXXXXXXXXXXXXXXXXXX"
 	channel := "#test"
 
 	// init slack config
-	sc := InitSlackWebhookConfig(webhookURL, channel)
+	sc := sw.InitSlackWebhookConfig(webhookURL, channel)
 
 	// create payload
-	payload := models.Payload{
+	payload := sm.Payload{
 		Channel:     channel,
 		Username:    ("Hello from go pkg."),
 		IconEmoji:   (":robot_face:"),

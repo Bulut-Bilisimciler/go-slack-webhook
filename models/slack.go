@@ -47,3 +47,13 @@ type Payload struct {
 	UnfurlMedia bool         `json:"unfurl_media,omitempty"`
 	Markdown    bool         `json:"mrkdwn,omitempty"`
 }
+
+func (attachment *Attachment) AddField(field Field) *Attachment {
+	attachment.Fields = append(attachment.Fields, &field)
+	return attachment
+}
+
+func (attachment *Attachment) AddAction(action Action) *Attachment {
+	attachment.Actions = append(attachment.Actions, &action)
+	return attachment
+}

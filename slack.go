@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/Bulut-Bilisimciler/go-slack-webhook/models"
@@ -38,6 +39,17 @@ func (sc *SlackConfig) SendWebhook(payload *models.Payload) error {
 		return errors.New("unable to post payload to slack " + err.Error())
 	}
 	defer resp.Body.Close()
+
+	// read body
+	resBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return errors.New("unable to read response body " + err.Error())
+	}
+
+	// check the response
+	if resp.StatusCode != 200 {
+		return errors.New("slack webhook returned non 200 status code " + resp.Status + " " + string(resBody))
+	}
 
 	// return success
 	return nil
